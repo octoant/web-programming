@@ -6,6 +6,19 @@
 
     <persistence-unit name="DEFAULT" transaction-type="RESOURCE_LOCAL">
 
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>ru.ifmo.web.model.Point</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orbis"/>
+            <property name="javax.persistence.jdbc.user" value="*******"/>
+            <property name="javax.persistence.jdbc.password" value="*******"/>
+
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+        </properties>
     </persistence-unit>
 
 </persistence>
