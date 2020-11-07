@@ -1,0 +1,135 @@
+
+/************************* template styles ************************/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+#document {
+    padding: 16px 6px;
+    width: 100%;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    background-color: #424450;
+}
+.wrapper {
+    width: 100%;
+    max-width: 1144px;
+    display: flex;
+    margin: 0 auto;
+}
+.flexed {
+    display: flex;
+    align-items: center;
+}
+.sidebar {
+    transition: 10ms;
+    margin-right: 5px;
+    width: 10%;
+    min-width: 64px;
+}
+.navbar {
+    width: 100%;
+    height: calc(100vh - 32px);
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #30313B;
+    padding: 16px 0;
+}
+#logo {
+    width: 36px;
+    height: 36px;
+}
+.navpage {
+    width: 75%;
+    flex-direction: column;
+    margin: 14px 0;
+    height: calc(100% - 100px);
+    min-width: 56px;
+    border-bottom: 2px solid #424450;
+    border-top: 2px solid #424450;
+}
+.home, .main {
+    width: 70%;
+    min-width: 52px;
+    padding: 4px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+}
+.home {
+    color: #82E0AA;
+    border: 2px solid #58D68D;
+}
+.main {
+    color: #85C1E9;
+    border: 2px solid #5DADE2;
+}
+.home:hover, .main:hover {
+    background-color: #424450;
+}
+.home:active, .main:active {
+    background-color: #30313B;
+}
+.clock {
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: 8px;
+}
+.digit {
+    padding: 4px 9px;
+    margin: 3px;
+    border-radius: 14px;
+}
+.digit:nth-child(1) {
+    border: 2px solid #EC7063;
+    color: #F1948A;
+}
+.digit:nth-child(2) {
+    border: 2px solid #A569BD;
+    color: #BB8FCE;
+}
+.digit:nth-child(3) {
+    border: 2px solid #5DADE2;
+    color: #85C1E9;
+}
+.digit:nth-child(4) {
+    border: 2px solid #45B39D;
+    color: #73C6B6;
+}
+.digit:nth-child(5) {
+    border: 2px solid #58D68D;
+    color: #82E0AA;
+}
+.digit:nth-child(6) {
+    border: 2px solid #F5B041;
+    color: #F8C471;
+}
+#git {
+    width: 36px;
+    height: 36px;
+}
+#git:hover svg {
+    fill: #101010;
+}
+
+.content {
+    width: 90%;
+    border-radius: 8px;
+    padding: 16px 0;
+    background-color: #30313B;
+    margin-left: auto;
+}
+/************************* responsibilities ***********************/
+@media screen and (min-width: 760px) {
+    .navbar {
+        letter-spacing: 1px;
+    }
+}
+@media screen and (max-width: 760px) {
+    .navbar {
+        letter-spacing: normal;
+    }
+}
