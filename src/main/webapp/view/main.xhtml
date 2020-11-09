@@ -10,15 +10,107 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
 
 <ui:composition template="template.xhtml">
 
-    <ui:define name="library">
+    <ui:define name="libraries">
         <title>Main page</title>
     </ui:define>
 
     <ui:define name="content">
+        <div class="req-field">
+            <div class="left-sided">
+                <span id="label-4-graph" class="teg-label">The graph area</span>
+                <div class="graph-field">
+                    <div id="coordinate"></div>
+                    <ui:include src="../resources/svg/graph.svg" />
+                </div>
+            </div>
+            <div class="right-sided">
+                <h:form styleClass="form-field" prependId="false">
+                    <span id="label-4-form" class="teg-label">Please enter point data</span>
+                    <div class="ui-frame">
+                        <!-- Slider entry component for x -->
+                        <div class="ui-box">
+                            <span class="label">Select value of the X [-5..5]</span>
+                            <ace:sliderEntry min="-5" max="5" stepPercent="10" value="${Controller.point.x}" />
+                        </div>
+                        <!-- Input text component for y -->
+                        <div class="ui-box">
+                            <span class="label">Enter value of the Y [-5..3]</span>
+                            <h:inputText id="input" styleClass="text-input sized" maxlength="16" autocomplete="off" value="${Controller.point.y}" />
+                        </div>
+                        <!-- List of checkboxes for r -->
+                        <div class="ui-box">
+                            <span class="label">Select value of the R</span>
+                            <div class="checkbox-list sized flexed">
+                                <div class="checkbox-label">
+                                    <h:selectBooleanCheckbox styleClass="checkbox" onclick="f(1)" value="${Controller.r1}" />
+                                    <span class="checkbox-value">1</span>
+                                </div>
+                                <div class="checkbox-label">
+                                    <h:selectBooleanCheckbox styleClass="checkbox" onclick="f(2)" value="${Controller.r2}" />
+                                    <span class="checkbox-value">2</span>
+                                </div>
+                                <div class="checkbox-label">
+                                    <h:selectBooleanCheckbox styleClass="checkbox" onclick="f(3)" value="${Controller.r3}" />
+                                    <span class="checkbox-value">3</span>
+                                </div>
+                                <div class="checkbox-label">
+                                    <h:selectBooleanCheckbox styleClass="checkbox" onclick="f(4)" value="${Controller.r4}" />
+                                    <span class="checkbox-value">4</span>
+                                </div>
+                                <div class="checkbox-label">
+                                    <h:selectBooleanCheckbox styleClass="checkbox" onclick="f(5)" value="${Controller.r5}" />
+                                    <span class="checkbox-value">5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button component for sending request -->
+                        <div class="ui-box">
+                            <span id="submit-msg" class="label"> </span>
+                            <h:commandButton id="submit" styleClass="submit-button sized" value="Submit" action="${Controller.insertPoint()}" />
+                        </div>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <div class="table-field">
+            <span id="label-4-table" class="teg-label">Table of results</span>
+            <h:form styleClass="table-form">
+                <h:dataTable value="#{Controller.points}" var="point" styleClass="table"
+                             headerClass="table-header" rowClasses="odd-row,even-row" columnClasses="column" >
+                    <h:column>
+                        <f:facet name="header">X(int)</f:facet> #{point.x}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Y(double)</f:facet> #{point.y}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">R(int)</f:facet> #{point.r}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Status</f:facet>
+                        <h:outputLabel rendered="#{point.status}" style="color: #58D68D">Inside</h:outputLabel>
+                        <h:outputLabel rendered="#{!point.status}" style="color: #EC7063">Outside</h:outputLabel>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Time</f:facet> #{point.time}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Duration(ms)</f:facet> #{point.duration}
+                    </h:column>
+                    <h:column>
+                        <h:commandLink action="#{Controller.removePoint(point.id)}">
+                            <ui:include src="../resources/svg/delete.svg" />
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </div>
         <h:outputScript library="js" name="main.js" />
     </ui:define>
 
