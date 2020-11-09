@@ -14,11 +14,28 @@
 
 <ui:composition template="template.xhtml">
 
-    <ui:define name="library">
+    <ui:define name="libraries">
         <title>Home page</title>
     </ui:define>
 
     <ui:define name="content">
+        <div class="intro flexed">
+            <div class="ui-clock">
+                <span class="cdigit">0</span>
+                <span class="cdigit">0</span>
+                <span class="delimiter">:</span>
+                <span class="cdigit">0</span>
+                <span class="cdigit">0</span>
+                <span class="delimiter">:</span>
+                <span class="cdigit">0</span>
+                <span class="cdigit">0</span>
+            </div>
+            <div class="ui-date">
+                <span id="month">00</span>
+                <span id="day">00</span>
+                <span id="year">0000</span>
+            </div>
+        </div>
         <h:outputScript library="js" name="index.js" />
     </ui:define>
 
