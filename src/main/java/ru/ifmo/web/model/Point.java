@@ -20,12 +20,12 @@ import java.time.format.DateTimeFormatter;
  * @since 1.0
  */
 @Entity
-@Table(name = "Poinе")
+@Table(name = "Point")
 @Data
 public class Point implements Serializable {
       private static final long serialVersionUID = 6783264645862385654L;
 
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
+      @GeneratedValue(strategy = GenerationType.SEQUENCE)
       @Id
       private long id;
 
@@ -52,6 +52,8 @@ public class Point implements Serializable {
 
             long diffTime = endTime - startTime;
             duration = String.format("%.6f", (double) diffTime / 10_000_000); // ms
+
+            this.y = ((int) (y * 1000000)) / 1000000d;
       }
 
       /**
