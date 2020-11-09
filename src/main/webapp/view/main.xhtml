@@ -81,7 +81,7 @@
         <div class="table-field">
             <span id="label-4-table" class="teg-label">Table of results</span>
             <h:form styleClass="table-form">
-                <h:dataTable value="#{Controller.points}" var="point" styleClass="table"
+                <h:dataTable id="points" value="#{Controller.points}" var="point" styleClass="table"
                              headerClass="table-header" rowClasses="odd-row,even-row" columnClasses="column" >
                     <h:column>
                         <f:facet name="header">X(int)</f:facet> #{point.x}

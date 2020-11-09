@@ -103,8 +103,10 @@ public class PointDao implements Dao<Point>, Serializable {
                   query.setParameter("id", id);
                   Point point = (Point) query.getSingleResult();
 
-                  entityManager.remove(point);
-                  entityManager.getTransaction().commit();
+                  if (point != null) {
+                        entityManager.remove(point);
+                        entityManager.getTransaction().commit();
+                  }
             } catch (RuntimeException exception) {
                   entityManager.getTransaction().rollback();
                   throw exception;

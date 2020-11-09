@@ -51,9 +51,12 @@ public class ControllerBean implements Serializable {
       /**
        * List of points, which are in database
        */
-      @Getter
-      @Setter
       public List<Point> points;
+
+      public List<Point> getPoints() {
+            refresh();
+            return points;
+      }
 
       /**
        * Refreshes the
