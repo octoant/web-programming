@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.ifmo.web</groupId>
-    <artifactId>laboratory-work-by-web-itmo</artifactId>
+    <artifactId>laboratory-work-by-web-programming</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
