@@ -23,6 +23,11 @@ public class PointToPointForm implements Converter<Point, PointForm> {
             pointForm.setY(point.getY());
             pointForm.setR(point.getR());
 
+            pointForm.setStatus(point.getStatus());
+
+            pointForm.setHistory(pointForm.getHistory());
+            pointForm.setDuration(point.getDuration());
+
             return pointForm;
       }
 }
