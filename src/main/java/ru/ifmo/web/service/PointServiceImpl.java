@@ -14,25 +14,25 @@ import java.util.List;
  */
 @Service
 public class PointServiceImpl implements PointService {
-      private final PointRepository repository;
+      private final PointRepository pointRepository;
 
       @Autowired
-      public PointServiceImpl(PointRepository repository) {
-            this.repository = repository;
+      public PointServiceImpl(PointRepository pointRepository) {
+            this.pointRepository = pointRepository;
       }
 
       @Override
       public List<Point> getPointByUsername(User user) {
-            return repository.getAllByUzer(user);
+            return pointRepository.getAllByUzer(user);
       }
 
       @Override
       public void addNewPoint(Point point) {
-            repository.save(point);
+            pointRepository.save(point);
       }
 
       @Override
       public void deleteAllPointsByUsername(User user) {
-            repository.deleteAllByUzer(user);
+            pointRepository.deleteAllByUzer(user);
       }
 }
