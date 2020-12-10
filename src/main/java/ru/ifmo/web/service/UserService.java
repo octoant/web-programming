@@ -1,11 +1,13 @@
 package ru.ifmo.web.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.ifmo.web.domain.User;
 
 /**
  * @author Bobur Zakirov
  * @since 12/1/2020 01:13:58
  */
+@Transactional
 public interface UserService {
 
       /**

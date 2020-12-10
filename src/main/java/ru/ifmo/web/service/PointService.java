@@ -1,5 +1,6 @@
 package ru.ifmo.web.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.ifmo.web.domain.Point;
 import ru.ifmo.web.domain.User;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @author Bobur Zakirov
  * @since 12/1/2020 01:13:41
  */
+@Transactional
 public interface PointService {
 
       /**
