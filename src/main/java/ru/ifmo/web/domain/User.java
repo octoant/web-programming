@@ -1,7 +1,6 @@
 package ru.ifmo.web.domain;
 
 import lombok.Data;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,17 +29,4 @@ public class User implements Serializable {
       @Column(nullable = false, unique = true)
       private String username;
       private String password;
-
-      public User() {
-      }
-      public User(String username, String password) {
-            this.username = username;
-            this.password = password;
-      }
-
-      // the method encodes a password
-      public User encode(PasswordEncoder encoder) {
-            this.password = encoder.encode(password);
-            return this;
-      }
 }

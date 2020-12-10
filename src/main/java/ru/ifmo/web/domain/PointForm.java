@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Bobur Zakirov
@@ -12,14 +13,12 @@ import javax.validation.constraints.Min;
 @Data
 public class PointForm {
 
-      @Min(-4) @Max(4)
+      @NotNull @Min(-4) @Max(4)
       private Double x;
 
-      @Min(-5) @Max(3)
+      @NotNull @Min(-5) @Max(3)
       private Double y;
 
-      @Min(-4) @Max(4)
+      @NotNull @Min(-4) @Max(4)
       private Double r;
-
-      private Boolean status;
 }

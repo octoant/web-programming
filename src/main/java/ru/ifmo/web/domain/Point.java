@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * The {@code ru.ifmo.web.domain.Point} entity class.
@@ -37,11 +39,13 @@ public class Point implements Serializable {
       @ManyToOne
       private User uzer;
 
-      public Point() {
-      }
-      public Point(Double x, Double y, Double r) {
-            this.x = x;
-            this.y = y;
-            this.r = r;
+      // initializes value of fields
+      public Point initialize() {
+            history = DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now());
+            long startTime = System.nanoTime();
+            status = x>=-r&&x<=0&&y>=0&&y<=r || x>=0&&y>=0&&r>=2*y&&x*x+y*y<=r*r || x<=0&&y<=0&&x+2*y>=-r;
+            long endTime = System.nanoTime();
+            duration = String.format("%.6f", (double) (endTime - startTime) / 10_000_000);
+            return this;
       }
 }
