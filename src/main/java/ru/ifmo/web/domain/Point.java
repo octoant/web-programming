@@ -43,7 +43,7 @@ public class Point implements Serializable {
       public Point initialize() {
             history = DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now());
             long startTime = System.nanoTime();
-            status = x>=-r&&x<=0&&y>=0&&y<=r || x>=0&&y>=0&&r>=2*y&&x*x+y*y<=r*r || x<=0&&y<=0&&x+2*y>=-r;
+            status = x>=-r&&x<=0&&y>=0&&y<=r || x>=0&&y>=0&&r>=2*y&&x*x+y*y<=r*r/4 || x<=0&&y<=0&&x+2*y>=-r;
             long endTime = System.nanoTime();
             duration = String.format("%.6f", (double) (endTime - startTime) / 10_000_000);
             return this;
